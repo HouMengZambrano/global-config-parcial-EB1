@@ -16,11 +16,11 @@ spring:
     gateway:
       routes:
         - id: catalogRoute
-          uri: http://localhost:8082  
+          uri: http://localhost:${PORT:${SERVER_PORT:0}}
           predicates:
             - Path=/catalog/**  
 
         - id: movieRoute
-          uri: http://localhost:8083  
+          uri:  http://localhost:${PORT:${SERVER_PORT:0}}
           predicates:
             - Path=/movie/** 
