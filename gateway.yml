@@ -14,13 +14,18 @@ eureka:
 spring:
   cloud:
     gateway:
+      default-filters:
+        - name: LogFilter
       routes:
         - id: catalogRoute
-          uri: http://localhost:${PORT:${SERVER_PORT:0}}
+          uri: http://localhost:61886
           predicates:
             - Path=/catalog/**  
 
         - id: movieRoute
-          uri:  http://localhost:${PORT:${SERVER_PORT:0}}
+          uri:  http://localhost:61927
           predicates:
             - Path=/movie/** 
+          filters:
+          - AddRequestHeader:user-request-header,custom-user-request-header
+          - AddResponseHeader:user-response-header,custom-user-response-header
