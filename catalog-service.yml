@@ -24,10 +24,10 @@ srping:
     enabled: true
 
 queue:
-  movie:
-    name: MovieQueue
   serie:
     name: SerieQueue
+  movie:
+    name: MovieQueue
   
    
 message: Queues Up
