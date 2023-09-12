@@ -18,6 +18,10 @@ spring:
           uri: lb://movie-service/
           predicates:
             - Path=/movie/**
+        - id: serieRoute
+          uri: lb://serie-service/
+          predicates:
+            - Path=/serie/**  
 
 
 eureka:
