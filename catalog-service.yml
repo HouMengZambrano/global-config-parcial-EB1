@@ -31,7 +31,7 @@ queue:
    
 message: Queues Up
 
-//circuit breaker
+
 management:
   endpoints:
     web:
