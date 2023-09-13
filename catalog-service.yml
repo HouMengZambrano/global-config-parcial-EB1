@@ -33,30 +33,38 @@ message: Queues Up
 
 //circuit breaker
 management:
-    endpoint:
-        health:
-            show-details: always
-    endpoints:
-        web:
-            exposure:
-                include: circuitbreakers,circuitbreakerevents,health,info,ratelimiters,metrics
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
     health:
-        circuitbreakers:
-            enabled: true
-resilience4j:
-    circuitbreaker:
-        instances:
-            subscription:
-                serie:
-                    allowHealthIndicatorToFail: false
-                    automaticTransitionFromOpenToHalfOpenEnabled: true
-                    failureRateThreshold: 50
-                    permittedNumberOfCallsInHalfOpenState: 3
-                    registerHealthIndicator: true
-                    slidingWindowSize: 5
-                    slidingWindowType: COUNT_BASED
-                    waitDurationInOpenState: 15000
+      show-details: always
 
+resilience4j:
+  circuitbreaker:
+    instances:
+      movie-service:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 15000
+        permittedNumberOfCallsInHalfOpenState: 3
+        registerHealthIndicator: true
+        allowHealthIndicatorToFail: false
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+  retry:
+    instances:
+      catalog-service:
+        waitDuration: 1000
+        maxAttempts: 3
+        retryExceptions:
+          - feign.FeignException$InternalServerError
+          
 eureka:
   client:
     register-with-eureka: true
