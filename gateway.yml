@@ -32,7 +32,7 @@ eureka:
     healthcheck:
       enabled: true
     service-url:
-      default-zone: http://eureka-server:8087/eureka
+      default-zone: http://eureka-server:8761/eureka
   instance:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 5
