@@ -6,7 +6,7 @@ spring:
     name: movie-service
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://movie-service:3370/movie-dev
+    url: jdbc:mysql://mysql:3370/movie-dev
     username: usr-movie
     password: pwd-movie
   jpa:
@@ -16,10 +16,10 @@ spring:
   rabbitmq:
     username: guest
     password: guest
-    localhost: localhost
+    localhost: rabbitmq
     port: 5672
   zipkin:
-    base-url: http://movie-service:9411/
+    base-url: http://zipkin:9411/
     enabled: true
     
 queue:
