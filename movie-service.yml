@@ -6,7 +6,7 @@ spring:
     name: movie-service
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3370/movie-dev
+    url: jdbc:mysql://movie-service:3370/movie-dev
     username: usr-movie
     password: pwd-movie
   jpa:
@@ -19,7 +19,7 @@ spring:
     localhost: localhost
     port: 5672
   zipkin:
-    base-url: http://localhost:9411/
+    base-url: http://movie-service:9411/
     enabled: true
     
 queue:
